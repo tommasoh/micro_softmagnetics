@@ -14,9 +14,11 @@ N  = 25; // Number of points on spline interpolation
 lr = 0.05; // mesh size for ribbon
 lm = 0.05; // mid-size mesh
 lc = 0.2; // coarse mesh size
-t = 0.006;  // ribbon thickness
+t = 0.008;  // ribbon thickness
+W = 0.700; // bit height
+Lb = 2.016; // bit length
 //+
-x0 = 0.50+0.36+A-t; // center x coord
+x0 = 0.5+Lb/4+A-t; // center x coord
 y0 = 0; // center y coord
 //+
 // Cosine points
@@ -33,29 +35,29 @@ Translate {t, 0, 0} {
 //+
 Point(28) = {0, -0.5, 0, lc};
 //+
-Point(29) = {0, 2*L+0.5+0.5, 0, lc};
+Point(29) = {0, 2*L+W+0.5, 0, lc};
 //+
-Point(30) = {3.0, -0.5, 0, lc};
+Point(30) = {1.6+Lb, -0.5, 0, lc};
 //+
-Point(31) = {3.0, 2*L+0.5+0.5, 0, lc};
+Point(31) = {1.6+Lb, 2*L+W+0.5, 0, lc};
 //+
 Point(32) = {0.5, L, 0, lm};
 //+
-Point(33) = {0.5, L+0.5, 0, lm};
+Point(33) = {0.5, L+W, 0, lm};
 //+
-Point(34) = {1.94, L, 0, lm};
+Point(34) = {0.5+Lb, L, 0, lm};
 //+
-Point(35) = {1.94, L+0.5, 0, lm};
+Point(35) = {0.5+Lb, L+W, 0, lm};
 //+
-Translate {0.24, 0, 0} {
+Translate {Lb/6, 0, 0} {
   Duplicata { Curve{1}; Curve{2}; }
 }
 //+
-Translate {0.48, 0, 0} {
+Translate {Lb/3, 0, 0} {
   Duplicata { Curve{1}; Curve{2}; Curve{3}; Curve{4}; }
 }
 //+
-Symmetry {0, 1, 0, -(L+0.25)} {
+Symmetry {0, 1, 0, -(L+W/2)} {
   Duplicata { Curve{1}; Curve{2}; Curve{3}; Curve{4}; Curve{5}; Curve{6}; Curve{7}; Curve{8}; }
 }
 // structured-ish boundary mesh spacing
