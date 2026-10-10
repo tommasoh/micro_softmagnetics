@@ -1,0 +1,7 @@
+name: fenicsx08
+channels: [conda-forge]
+dependencies:
+  - python=3.11
+  - fenics-dolfinx=0.8
+  - mpich
+  - pytest
